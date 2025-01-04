@@ -14,6 +14,8 @@ namespace Gamekit3D
 
         public bool respawning { get { return m_Respawning; } }
 
+        public GameObject DeathSript;
+
         public float maxForwardSpeed = 8f;        // How fast Ellen can run.
         public float gravity = 20f;               // How fast Ellen accelerates downwards when airborne.
         public float jumpSpeed = 10f;             // How fast Ellen takes off when jumping.
@@ -668,7 +670,6 @@ namespace Gamekit3D
                 hurtAudioPlayer.PlayRandomClip();
             }
         }
-
         // Called by OnReceiveMessage and by DeathVolumes in the scene.
         public void Die(Damageable.DamageMessage damageMessage)
         {
@@ -677,6 +678,8 @@ namespace Gamekit3D
             m_VerticalSpeed = 0f;
             m_Respawning = true;
             m_Damageable.isInvulnerable = true;
+            m_Damageable.currentHitPoints = 0;
+            DeathSript.GetComponent<Deathpositontofile>().Muertes_Json();
         }
     }
 }
