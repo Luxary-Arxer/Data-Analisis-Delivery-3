@@ -70,12 +70,16 @@ namespace Gamekit3D
             m_Collider.enabled = enabled;
         }
 
+        public GameObject PlayerObject;
+
         public void ApplyDamage(DamageMessage data)
         {
             if (currentHitPoints <= 0)
-            {//ignore damage if already dead. TODO : may have to change that if we want to detect hit on death...
+            {
+                //ignore damage if already dead. TODO : may have to change that if we want to detect hit on death...
                 return;
             }
+
 
             if (isInvulnerable)
             {
@@ -98,7 +102,7 @@ namespace Gamekit3D
 
             if (currentHitPoints <= 0)
             {
-
+                PlayerObject.GetComponent<Deathpositontofile>().Muertes_Json();
                 schedule += OnDeath.Invoke; //This avoid race condition when objects kill each other.
             }
             else

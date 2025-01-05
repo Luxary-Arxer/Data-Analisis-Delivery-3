@@ -12,7 +12,6 @@ public class Deathpositontofile : MonoBehaviour
     {
         public int numero_Muerte;
         public float x, y, z;
-
         public PosicionPlayer(int newNumero_Muerte, float new_x, float new_y, float new_z)
         {
             numero_Muerte = newNumero_Muerte;
@@ -32,8 +31,8 @@ public class Deathpositontofile : MonoBehaviour
     public void Start()
     {
         File.AppendAllText(Application.dataPath + "/Death positions.txt", "\nNew Session \n\n");
-
     }
+
     public void Update()
     {
         PlayerPosition = PlayerObject.transform.position;
@@ -48,9 +47,10 @@ public class Deathpositontofile : MonoBehaviour
         }
 
     }
+    //Funcion a llamar cuando se muere
     public void Muertes_Json()
     {
-        //Al morir guardar la posicion del player
+
         muertes = muertes + 1;
 
         Debug.Log("Muertes: " + muertes
