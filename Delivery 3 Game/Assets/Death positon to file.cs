@@ -60,7 +60,7 @@ public class Deathpositontofile : MonoBehaviour
             + "| Position Z: " + PlayerPosition.z);
 
         string content = "Death Player Num: "
-            + muertes.ToString() + "| Position: " +
+            + muertes.ToString() + " | Position: " +
             PlayerPosition.x.ToString() + ", " +
             PlayerPosition.y.ToString() + ", " +
             PlayerPosition.z.ToString() + "\n";
