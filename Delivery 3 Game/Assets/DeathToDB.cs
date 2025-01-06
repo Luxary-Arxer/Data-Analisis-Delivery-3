@@ -89,25 +89,60 @@ public class DeathToDB : MonoBehaviour
         return null;
     }
 
-private IEnumerator SendDeathPositionToServer(string deathPositionData)
-{
-    WWWForm form = new WWWForm();
-    form.AddField("DeathPosition", deathPositionData);
-
-    Debug.Log("Sending DeathPosition: " + deathPositionData);
-
-    using (UnityWebRequest webRequest = UnityWebRequest.Post(serverUrl, form))
+    private IEnumerator SendDeathPositionToServer(string deathPositionData)
     {
-        yield return webRequest.SendWebRequest();
+        // First, extract the position part from the deathPositionData
+        string[] parts = deathPositionData.Split(new string[] { "Position: " }, StringSplitOptions.None);
 
-        if (webRequest.result != UnityWebRequest.Result.Success)
+        // If there's any position data found
+        if (parts.Length > 1)
         {
-            Debug.LogError("Error sending data: " + webRequest.error);
+            // Extract the position values (assuming they are in the format: "X Y Z")
+            string positionData = parts[1].Trim();  // Remove any leading/trailing spaces
+            string[] coordinates = positionData.Split('.');  // Split by periods
+
+            if (coordinates.Length == 3)
+            {
+                // Convert the coordinates to float
+                float x = float.Parse(coordinates[0].Trim());
+                float y = float.Parse(coordinates[1].Trim());
+                float z = float.Parse(coordinates[2].Trim());
+
+                // Create a form to send the data
+                WWWForm form = new WWWForm();
+                form.AddField("X", x.ToString());
+                form.AddField("Y", y.ToString());
+                form.AddField("Z", z.ToString());
+
+                // Debug: Log the values
+                Debug.Log($"Sending Death Position - X: {x}, Y: {y}, Z: {z}");
+
+                // URL for the server
+                string serverUrl = "https://citmalumnes.upc.es/~maksymp/DeathPositions.php";
+
+                using (UnityWebRequest webRequest = UnityWebRequest.Post(serverUrl, form))
+                {
+                    yield return webRequest.SendWebRequest();
+
+                    if (webRequest.result != UnityWebRequest.Result.Success)
+                    {
+                        Debug.LogError("Error sending data: " + webRequest.error);
+                    }
+                    else
+                    {
+                        // Print the response from the PHP script
+                        Debug.Log("Server Response: " + webRequest.downloadHandler.text);
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError("Invalid Death Position format, expected 3 coordinates.");
+            }
         }
         else
         {
-            // Print the response from the PHP script
-            Debug.Log("Server Response: " + webRequest.downloadHandler.text);
+            Debug.LogError("No position data found in the provided string.");
         }
     }
-}}
+}

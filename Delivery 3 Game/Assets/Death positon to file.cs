@@ -61,8 +61,8 @@ public class Deathpositontofile : MonoBehaviour
 
         string content = "Death Player Num: "
             + muertes.ToString() + " | Position: " +
-            PlayerPosition.x.ToString() + ", " +
-            PlayerPosition.y.ToString() + ", " +
+            PlayerPosition.x.ToString() + ". " +
+            PlayerPosition.y.ToString() + ". " +
             PlayerPosition.z.ToString() + "\n";
 
         File.AppendAllText(Application.dataPath + "/Death positions.txt", content);

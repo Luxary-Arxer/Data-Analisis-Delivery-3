@@ -23,3 +23,29 @@ ________New Session________
 Death Player Num: 1 | Position: -25,98606, 0,01651818, -33,99902
 ________New Session________
 Death Player Num: 1 | Position: -25,15022, 0,01651824, -32,74258
+________New Session________
+Death Player Num: 1 | Position: -25,98622, 0,09868705, -33,57243
+________New Session________
+Death Player Num: 1 | Position: -24,69544, 0,01651818, -33,55334
+________New Session________
+Death Player Num: 1 | Position: -25,95094, 0,01868737, -32,87559
+________New Session________
+Death Player Num: 1 | Position: -26,35932, 0,01651824, -33,77859
+________New Session________
+Death Player Num: 1 | Position: -25,61264, 0,08268714, -34,50013
+________New Session________
+Death Player Num: 1 | Position: -25,6623, 0,09868693, -33,39099
+________New Session________
+Death Player Num: 1 | Position: -25,2433, 0,02268738, -33,40245
+________New Session________
+Death Player Num: 1 | Position: -25,90923. 0,01651835. -34,16566
+________New Session________
+Death Player Num: 1 | Position: -26,10152. 0,02268749. -32,92245
+________New Session________
+Death Player Num: 1 | Position: -25,91985. 0,01651818. -34,42712
+________New Session________
+Death Player Num: 1 | Position: -25,18644. 0,05945206. -34,4978
+________New Session________
+Death Player Num: 1 | Position: -25,07411. 0,07833689. -34,28642
+________New Session________
+Death Player Num: 1 | Position: -24,72623. 0,01651818. -31,94172
