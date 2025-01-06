@@ -12,11 +12,13 @@ namespace Gamekit3D
 
         void OnTriggerEnter(Collider other)
         {
+
             var pc = other.GetComponent<PlayerController>();
             if (pc != null)
             {
                 pc.Die(new Damageable.DamageMessage());
             }
+
             if (audio != null)
             {
                 audio.transform.position = other.transform.position;

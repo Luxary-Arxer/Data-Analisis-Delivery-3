@@ -677,6 +677,7 @@ namespace Gamekit3D
             m_Respawning = true;
             m_Damageable.isInvulnerable = true;
             m_Damageable.currentHitPoints = 0;
+            m_Damageable.PlayerObject.GetComponent<Deathpositontofile>().Muertes_Json();
         }
     }
 }

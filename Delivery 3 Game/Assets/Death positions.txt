@@ -1,12 +1,2 @@
-Death positions
+<DEATH POSITIONS>
 
-
-New Session 
-
-Death Player Num 1
- -1,952168, -0,02642906, -34,47979
-
-New Session 
-
-Death Player Num 1
- 28,72934, 0,1318846, 0,8846242

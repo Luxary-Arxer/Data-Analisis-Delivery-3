@@ -30,7 +30,7 @@ public class Deathpositontofile : MonoBehaviour
 
     public void Start()
     {
-        File.AppendAllText(Application.dataPath + "/Death positions.txt", "\nNew Session \n\n");
+        File.AppendAllText(Application.dataPath + "/Death positions.txt", "________New Session________\n");
     }
 
     public void Update()
@@ -38,7 +38,8 @@ public class Deathpositontofile : MonoBehaviour
         PlayerPosition = PlayerObject.transform.position;
         if (Input.GetKeyDown(KeyCode.R))
         {
-            File.WriteAllText(Application.dataPath + "/Death positions.txt", "Death positions\n\n");
+            Debug.Log("Reseted File");
+            File.WriteAllText(Application.dataPath + "/Death positions.txt", "<DEATH POSITIONS>\n\n");
         }
 
         if (Input.GetKeyDown(KeyCode.P))
@@ -58,8 +59,8 @@ public class Deathpositontofile : MonoBehaviour
             + "| Position Y: " + PlayerPosition.y
             + "| Position Z: " + PlayerPosition.z);
 
-        string content = "Death Player Num "
-            + muertes.ToString() + "\n " +
+        string content = "Death Player Num: "
+            + muertes.ToString() + "| Position: " +
             PlayerPosition.x.ToString() + ", " +
             PlayerPosition.y.ToString() + ", " +
             PlayerPosition.z.ToString() + "\n";

@@ -102,7 +102,7 @@ namespace Gamekit3D
 
             if (currentHitPoints <= 0)
             {
-                PlayerObject.GetComponent<Deathpositontofile>().Muertes_Json();
+                //PlayerObject.GetComponent<Deathpositontofile>().Muertes_Json();
                 schedule += OnDeath.Invoke; //This avoid race condition when objects kill each other.
             }
             else
