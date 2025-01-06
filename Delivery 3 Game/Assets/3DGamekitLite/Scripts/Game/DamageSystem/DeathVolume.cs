@@ -14,13 +14,15 @@ namespace Gamekit3D
         {
 
             var pc = other.GetComponent<PlayerController>();
+            /*
             if (pc != null)
             {
                 pc.Die(new Damageable.DamageMessage());
             }
-
-            if (audio != null)
+            */
+            if (pc != null && audio != null)
             {
+                pc.Die(new Damageable.DamageMessage());
                 audio.transform.position = other.transform.position;
                 if (!audio.isPlaying)
                     audio.Play();
