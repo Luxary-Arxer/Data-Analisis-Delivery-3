@@ -7,7 +7,7 @@ public class EnemyPositionToServer : MonoBehaviour
 {
     public static EnemyPositionToServer Instance; // Singleton para facilitar el acceso
 
-    public string serverUrl = "https://citmalumnes.upc.es/~maksymp/DeathPositions.php";
+    private string serverUrl = "https://citmalumnes.upc.es/~maksymp/EnemiesDeathPositions.php";
 
     private void Awake()
     {
