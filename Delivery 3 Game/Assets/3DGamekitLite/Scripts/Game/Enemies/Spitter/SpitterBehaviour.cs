@@ -85,6 +85,8 @@ namespace Gamekit3D
             //We unparent the deathAudio source, as it would destroy it with the gameobject when it get replaced by the ragdol otherwise
             deathAudio.transform.SetParent(null, true);
             deathAudio.PlayRandomClip();
+            //enviar evento
+            EnemyPositionToServer.Instance.SendEnemyDeathPosition(transform.position);
 
             GameObject.Destroy(deathAudio, deathAudio.clip == null ? 0.0f : deathAudio.clip.length + 0.5f);
         }
