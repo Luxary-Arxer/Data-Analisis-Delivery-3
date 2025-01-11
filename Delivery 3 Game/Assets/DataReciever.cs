@@ -25,20 +25,18 @@ public class DataReciever : MonoBehaviour
 
     public void Start()
     {
-        StartCoroutine(GetServerData());
+        StartCoroutine(GetServerData("https://citmalumnes.upc.es/~maksymp/GetDeathPositions.php", Color.cyan));
+        StartCoroutine(GetServerData("https://citmalumnes.upc.es/~maksymp/GetEnemiesDeathPositions.php", Color.red));
     }
 
-    IEnumerator GetServerData()
+    IEnumerator GetServerData(string url, Color color)
     {
-        string url = "https://citmalumnes.upc.es/~maksymp/GetDeathPositions.php";
-
         UnityWebRequest request = UnityWebRequest.Get(url);
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.Success)
         {
             string json = request.downloadHandler.text;
-            Debug.Log("Data received: " + json);
             DataObject dataObject = JsonUtility.FromJson<DataObject>("{\"data\":" + json + "}");
 
             foreach (onDeathData data in dataObject.data)
@@ -46,21 +44,22 @@ public class DataReciever : MonoBehaviour
                 Vector3 positionSpawn = new Vector3(Mathf.Round(data.X), Mathf.Round(data.Y), Mathf.Round(data.Z));
 
                 GameObject cube = Instantiate(cubePrefab, positionSpawn, Quaternion.identity);
+                ChangeColor(positionSpawn, color);
             }
         }
     }
 
-    public void ChangeColor(Vector3 position)
+    public void ChangeColor(Vector3 position, Color color)
     {
         GameObject gameObject = FindObjectAtPos(position);
 
         if(gameObject != null)
         {
-            ColorChanger colorChanger = gameObject.GetComponentInChildren<ColorChanger>();
+            ColorChanger colorChanger = gameObject.GetComponent<ColorChanger>();
 
-            if(colorChanger != null)
+            if (colorChanger != null)
             {
-                colorChanger.ChangeColor(Color.red);
+                colorChanger.ChangeColor(color);
             }
         }
     }
